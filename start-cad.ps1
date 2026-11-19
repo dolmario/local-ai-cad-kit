@@ -95,7 +95,7 @@ if ($External) {
     $serverProc = $null
     Wait-Url "$($prof.baseUrl)/models" 30 "your model server (is Ollama / LM Studio running with the server enabled?)"
 } else {
-Write-Host "==> Starting the local model server ($($prof.model)); the first start takes a minute" -ForegroundColor Cyan
+Write-Host "==> Starting the local model server ($($prof.model)); the first start can take several minutes (large model loads into memory) - please wait, do not close this window" -ForegroundColor Cyan
 # The server log is kept (logs\llama-server.log, logs\llama-server.err.log) so a crash can be diagnosed: send these two files when you report a problem.
 New-Item -ItemType Directory -Force -Path (Join-Path $Kit "logs") | Out-Null
 $serverProc = Start-Process -FilePath $Server -ArgumentList $ServerArgs -WindowStyle Minimized -PassThru -RedirectStandardOutput (Join-Path $Kit "logs\llama-server.log") -RedirectStandardError (Join-Path $Kit "logs\llama-server.err.log")
@@ -106,7 +106,7 @@ Wait-Url "http://127.0.0.1:$Port/health" 900 "llama-server"
 Write-Host "==> Starting FreeCAD with the MCP bridge (port 9875)" -ForegroundColor Cyan
 $freecadProc = Start-Process -FilePath $FreeCad -ArgumentList "`"$(Join-Path $Kit 'freecad\freecad_rpc_start.py')`"" -PassThru
 Wait-Own 9875 $freecadProc 180 "FreeCAD"
-Set-Content -Path (Join-Path $Kit "running.txt") -Value ("llama-server PID {0}`r`nFreeCAD PID {1}`r`nClose these two windows when you are done." -f $(if ($serverProc) { $serverProc.Id } else { "(your own server)" }), $freecadProc.Id)
+Set-Content -Path (Join-Path $Kit "running.txt") -Value ("llama-server PID {0}`r`nFreeCAD PID {1}`r`nRun STOP-CAD.bat when you are done." -f $(if ($serverProc) { $serverProc.Id } else { "(your own server)" }), $freecadProc.Id)
 
 # Runtime copy of opencode.json with absolute paths, so the MCP servers start no matter which folder opencode uses.
 $cfg = Get-Content (Join-Path $Kit "opencode.json") -Raw | ConvertFrom-Json
@@ -153,6 +153,7 @@ if ($TestCommand) {
     exit $rc
 }
 
+Write-Host "==> Ready. When you are done: type /exit, then double-click STOP-CAD.bat (frees graphics memory and RAM)." -ForegroundColor Cyan
 Write-Host "==> Starting opencode. Use /kappe, /zeichnung, /beschreibung or /pruefen, for example:" -ForegroundColor Cyan
 Write-Host "    /beschreibung cable clip for a 6 mm cable, 3 mm wall, screw hole 3.5 mm" -ForegroundColor Green
 $env:OPENCODE_CONFIG = $runtime

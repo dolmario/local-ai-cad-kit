@@ -5,6 +5,16 @@ Everything runs on your own PC. No cloud, no account.
 
 Companion files for the Dolmario Local AI video. German version: `LIESMICH.md`.
 
+## Quick start (5 steps)
+
+1. **Fully unpack** the ZIP (right click > Extract all) to `C:\local-ai-cad-kit`. Do not run it from inside the ZIP, and avoid paths with spaces.
+2. Double-click **START-HERE.bat**. Windows may warn ("Windows protected your PC" > *More info* > *Run anyway*), and FreeCAD/Node ask for administrator rights. The install downloads about 23 GB and takes roughly an hour. Keep the window open until it says "Setup finished".
+3. Double-click **START-CAD.bat**. Several windows open (model server minimised, FreeCAD, opencode). That is normal. The first start can take several minutes, please wait.
+4. In the opencode window type one sentence, e.g. `/beschreibung cable clip for a 6 mm cable, 3 mm wall, screw hole 3.5 mm`. If opencode asks permission for a tool call, confirm (allow). Finished parts are saved as STL and STEP in `output\`.
+5. Done? Type `/exit`, then double-click **STOP-CAD.bat**. This frees graphics memory and RAM.
+
+You do not need a 3D printer to try it: `/beschreibung` and `/zeichnung` give files you can look at in FreeCAD on screen. You only need the markerboard for `/kappe` with a photo. Put photos or drawings into the kit folder (e.g. `eingabe\`) to avoid path problems; put paths with spaces in quotes.
+
 ## What you get
 
 - **A printable markerboard.** Lay a key or a flat part on it, take a photo, and the tool turns the photo into millimetres.

@@ -22,6 +22,8 @@ $Kit = $PSScriptRoot
 $Programs = Join-Path $Kit "programs"
 $Models = Join-Path $Kit "models"
 $Log = Join-Path $Kit "install.log"
+if ($Kit -match '(?i)\\Temp\\|\.zip') { throw "This folder looks like a ZIP preview or a temp folder ($Kit). Please unpack the whole ZIP (right click > Extract all) to a normal folder such as C:\local-ai-cad-kit and run START-HERE.bat there." }
+if ($Kit -match '\s') { Write-Host "Warning: the folder path contains spaces ($Kit). If something fails, move the kit to a path without spaces such as C:\local-ai-cad-kit." -ForegroundColor Yellow }
 
 function Say($msg) { Write-Host ""; Write-Host "==> $msg" -ForegroundColor Cyan; if (-not $DryRun) { Add-Content -Path $Log -Value ("[{0}] {1}" -f (Get-Date -Format s), $msg) } }
 function Do-Step($what, [scriptblock]$action) {

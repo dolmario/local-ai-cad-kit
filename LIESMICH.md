@@ -3,6 +3,16 @@
 Ein lokales KI-Modell (Qwen3.8 27B) konstruiert für dich druckbare Teile in **FreeCAD**. Es kann dein Teil auch über ein Foto auf einem gedruckten Markerboard vermessen.
 Alles läuft auf deinem eigenen PC, ohne Cloud und ohne Konto.
 
+## Schnellstart (5 Schritte)
+
+1. ZIP **komplett entpacken** (Rechtsklick > Alle extrahieren) nach `C:\local-ai-cad-kit`. Nicht aus der ZIP heraus starten, kein Pfad mit Leerzeichen.
+2. **START-HERE.bat** doppelklicken. Windows warnt eventuell („Der Computer wurde geschützt“ > *Weitere Informationen* > *Trotzdem ausführen*), und FreeCAD/Node fragen nach Administratorrechten. Die Installation lädt etwa 23 GB und dauert rund eine Stunde. Fenster offen lassen, bis „Setup finished“ steht.
+3. **START-CAD.bat** doppelklicken. Es öffnen sich mehrere Fenster (Modellserver minimiert, FreeCAD, opencode). Das ist normal. Der erste Start kann mehrere Minuten dauern, bitte warten.
+4. Im opencode-Fenster einen Satz tippen, z. B. `/beschreibung Kabelclip für 6-mm-Kabel, 3 mm Wand, Schraubenloch 3,5 mm`. Fragt opencode nach Erlaubnis für einen Werkzeugaufruf, bestätigen (allow). Fertige Teile liegen als STL und STEP im Ordner `output\`.
+5. Fertig? `/exit` tippen, dann **STOP-CAD.bat** doppelklicken. Das gibt Grafikspeicher und Arbeitsspeicher wieder frei.
+
+Du brauchst keinen 3D-Drucker, um es auszuprobieren: `/beschreibung` und `/zeichnung` liefern Dateien, die du am Bildschirm in FreeCAD ansehen kannst. Das Markerboard brauchst du nur für `/kappe` mit Foto. Legst du Fotos oder Zeichnungen in den Kit-Ordner (z. B. `eingabe\`), gehst du Pfadproblemen aus dem Weg; Pfade mit Leerzeichen in Anführungszeichen setzen.
+
 ## Was drin ist
 
 - **Druckbares Markerboard.** Schlüssel oder flaches Teil drauflegen, fotografieren, und das Werkzeug rechnet das Foto in Millimeter um.
@@ -39,8 +49,8 @@ Nur anschauen, was passieren würde: `START-HERE.bat -DryRun`.
 
 1. `markerboard/` drucken (siehe `markerboard/DRUCKEN.md`). Schlüssel in die Mitte legen, senkrecht von oben fotografieren.
 2. In opencode einen fertigen Befehl nutzen (Prompts in `prompts/PIPELINE-PROMPTS.md`):
-   - `/kappe C:\Users\ich\Bilder\schluessel.jpg` – Schlüsselkappe aus einem Foto
-   - `/zeichnung C:\Zeichnungen\halter.png` – Teil aus einer technischen Zeichnung
+   - `/kappe eingabe\schluessel.jpg` – Schlüsselkappe aus einem Foto
+   - `/zeichnung eingabe\halter.png` – Teil aus einer technischen Zeichnung
    - `/beschreibung Kabelclip für 6-mm-Kabel, 3 mm Wand` – Teil aus einer Beschreibung
    - `/pruefen` – offenes Teil vor dem Druck prüfen
 3. Die KI zeigt die Fotowerte und fragt nach **Messschieberwerten**. Bitte nachmessen, denn Fotos lesen Breiten etwa 0,2 bis 0,3 mm zu groß.
