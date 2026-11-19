@@ -1,0 +1,11 @@
+newmtl grund
+Kd 0.949 0.949 0.949
+Ka 0 0 0
+Ks 0 0 0
+d 1
+
+newmtl schwarz
+Kd 0.063 0.063 0.063
+Ka 0 0 0
+Ks 0 0 0
+d 1

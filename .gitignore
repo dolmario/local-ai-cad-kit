@@ -1,0 +1,12 @@
+models/
+programs/
+output/
+install.log
+running.txt
+opencode.runtime.json
+kit-path.txt
+__pycache__/
+*.pyc
+.venv/
+foto-mcp/.venv/
+foto-mcp/uv.lock.bak
