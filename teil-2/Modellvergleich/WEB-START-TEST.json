@@ -1,0 +1,41 @@
+{
+  "wrapper_sha256": "9f12e69444b513beb1abcc8a4d6a1cad03c577cf97facf205b747fdbd63fe765",
+  "original_launcher_sha256": "c4928a3d841938c14091f0a0f3e73f1c7ea842ca0c76022a8c02f534d6f13cfb",
+  "invocation": "pwsh.exe on Windows, original extracted launcher with -DryRun",
+  "model_profile": "Registered Inkling 2 Mini with existing local GGUF, matching projector and runtime paths.",
+  "search_routes": [
+    {
+      "harness": "opencode",
+      "mode": "search",
+      "dimension_policy_in_dispatched_task": true
+    },
+    {
+      "harness": "opencode2",
+      "mode": "search",
+      "dimension_policy_in_dispatched_task": true
+    },
+    {
+      "harness": "cline-core",
+      "mode": "search",
+      "dimension_policy_in_dispatched_task": true
+    },
+    {
+      "harness": "crush",
+      "mode": "search",
+      "dimension_policy_in_dispatched_task": true
+    },
+    {
+      "harness": "hermes",
+      "mode": "search",
+      "dimension_policy_in_dispatched_task": true
+    }
+  ],
+  "explicit_offline_route_checked": true,
+  "custom_task_and_search_endpoint_forwarded": true,
+  "cline_approval_requirement_checked": true,
+  "search_failure_before_model_start_verified_in_launcher_source": true,
+  "gpu_inference_performed": false,
+  "cad_or_model_services_started": false,
+  "dry_run_contacts_network": false,
+  "historical_live_web_actions_recorded_separately": true
+}

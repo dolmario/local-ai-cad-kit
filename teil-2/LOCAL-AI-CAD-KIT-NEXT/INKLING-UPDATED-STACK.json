@@ -1,0 +1,7 @@
+{
+  "runtime_release": "b12649-mix-c7059d6",
+  "actual_rocm_binary_build": "12649 / 189f431bf",
+  "model_repository": "unsloth/Inkling-2-Mini-GGUF",
+  "comparison_scope": "Updated runtime and main GGUF, projector and drafter together; not an isolated runtime or speed ablation.",
+  "bundled_weights_or_binaries": false
+}

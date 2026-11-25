@@ -130,3 +130,6 @@ The installer picks a model from your hardware. You can force one, and you can k
 
 ## Advertisement
 Our printer, the Anycubic Kobra X: https://pboost.me/E6KBb0ba (advertisement / affiliate link: I may earn a commission on qualifying purchases, the price stays the same for you).
+
+## Part 2
+Companion files for video part 2 (five models, cable clip, editable enclosure, experimental multi-assistant kit): see [`teil-2/`](teil-2/README.md).

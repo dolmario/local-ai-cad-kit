@@ -1,0 +1,81 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "local/local-cad",
+  "provider": {
+    "local": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Local llama.cpp",
+      "options": {
+        "baseURL": "http://127.0.0.1:18080/v1"
+      },
+      "models": {
+        "local-cad": {
+          "name": "Local CAD model (vision)",
+          "limit": {
+            "context": 65536,
+            "output": 32768
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "mcp": {
+    "freecad": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--python",
+        "3.12",
+        "--from",
+        "freecad-mcp==0.1.31",
+        "freecad-mcp",
+        "--only-text-feedback"
+      ],
+      "enabled": true,
+      "timeout": 60000
+    },
+    "photo-measure": {
+      "type": "local",
+      "command": [
+        "uv",
+        "run",
+        "--project",
+        "foto-mcp",
+        "python",
+        "foto-mcp/foto_mcp.py"
+      ],
+      "enabled": true,
+      "timeout": 60000
+    }
+  },
+  "command": {
+    "kappe": {
+      "description": "key cap from a photo",
+      "template": "Design a TPU key cap for the key in this photo: $ARGUMENTS\nFirst load the skills photo-vs-caliper, key-cap and freecad-mcp-rules and follow them, together with AGENTS.md:\n1. Call photo-measure.measure_key with the photo path. Show the values and the path of the control image, and ask me to check it.\n2. Ask me for caliper values (head diameter, head thickness, shoulder width right next to the head). Wait for my answer.\n3. Write down the design with all numbers before building: groove diameter = head diameter + 0.3 mm (this fitted on our printed cap), groove height = head thickness + 0.3 mm,\n   lip opening = head diameter - 2 mm, outer wall 1.5 mm, lip thickness 1.0 mm, shaft passage = shoulder edges + 0.15 mm per side.\n4. Build ONE solid in a new FreeCAD document. Lips closed all round, only the passage open.\n5. Check with code: isValid, solids == 1, bounding box, isInside probes (lips closed, passage free, groove free). Report the results.\n6. Export STL and STEP to output/. Give the paths."
+    },
+    "zeichnung": {
+      "description": "part from a technical drawing",
+      "template": "Build the part shown in this technical drawing: $ARGUMENTS\nFirst load the skills drawing-to-part, freecad-mcp-rules and printability and follow them.\n1. Look at the image. List every view, every dimension with its value, and which feature it belongs to. Mark dimensions you cannot read\n   or that are given as a letter or a star (for example ØX*) as OPEN. Never invent a number.\n2. Explain in 3–5 sentences how the views fit together (which view shows which side, where holes go through).\n3. Ask me about every OPEN dimension. If I say \"leave it\", build a plausible placeholder and name it clearly as a placeholder.\n4. Threads: build core holes (M3 = 2.5, M4 = 3.3, M5 = 4.2, M6 = 5.0, M12x1 = 11.0) and say that they are core holes.\n5. Before you build, write the list \"hole -> X, Y, diameter\" and \"overall size X, Y, Z\" from the drawing. Views are projections of ONE solid body; never hollow a block and never invent wall thickness. A bend is built with l_bracket(), NEVER with makeFillet.\n6. Build ONE solid in a new FreeCAD document, in the drawing's units (mm). START EVERY execute_code script with exactly this line (it gives you KIT, l_bracket, profile_solid, cyl_cut, export_part):\n   exec(open(open(__import__(\"os\").path.expanduser(\"~/.local-ai-cad-kit-path.txt\")).read().strip() + \"/skills/drawing-to-part/cad_helpers.py\", encoding=\"utf-8\").read())\n   Example bent bracket: s = l_bracket(3, 3, 35, 26, 35); s = cyl_cut(s, 12.5, (3, 16, 17.5), (1, 0, 0)); obj = doc.addObject(\"Part::Feature\", \"Part1\"); obj.Shape = s; doc.recompute(). Use cyl_cut() for EVERY hole and bore (it handles the axis); never call Part.makeCylinder or rotate cylinders yourself. If an operation fails twice, leave that feature out and say so.\n7. Check with code: isValid, solids == 1, bounding box against the overall dimensions, hole positions and diameters\n   (cylinder faces: radius and axis, use part_report). Report a table \"drawing value / model value\" with numbers printed by code, not typed.\n8. Export with export_part(obj, \"<PartName>\") (writes STEP and STL to the kit output folder). Do not write your own export code."
+    },
+    "beschreibung": {
+      "description": "part from a description",
+      "template": "Build this part: $ARGUMENTS\nFirst load the skills freecad-mcp-rules and printability and follow them.\n1. Repeat the request as a short list of requirements with numbers. If something important is missing (size, wall thickness,\n   hole size, what it attaches to), ask me – at most three short questions – then wait.\n2. Propose a simple design in 3–5 sentences, including printing orientation without supports where possible.\n3. Build ONE solid in a new FreeCAD document. Use fillets or chamfers only where they help printing or strength.\n4. Check with code: isValid, solids == 1, bounding box, and every functional size from step 1.\n5. Export STL and STEP to output/. Add one line of printing advice (orientation, material)."
+    },
+    "pruefen": {
+      "description": "check before printing",
+      "template": "Load the skill printability. Check the part in the active FreeCAD document before I print it:\nisValid, number of solids, bounding box, volume, minimum wall thickness at the thinnest place you can find,\noverhangs steeper than 45 degrees in the printing orientation, and whether STL/STEP exist in output/.\nReport problems first, then what is fine. Do not change the part unless I ask."
+    }
+  },
+  "instructions": [
+    "AGENTS.md"
+  ]
+}

@@ -1,0 +1,23 @@
+Design an editable, two-part electronics enclosure, in millimetres. These are synthetic design dimensions selected for this evaluation, not measurements of a real device. No electrical, thermal, load or print-fit certification is requested.
+
+Coordinates: X length, Y width, Z height. A master FreeCAD Spreadsheet must expose these valid descriptive aliases with millimetre values: LengthMM=120 mm, WidthMM=80 mm, HeightMM=40 mm, WallMM=3 mm and FloorMM=3 mm. In the geometry description below, the short symbols L, W, H, Wall and Floor mean those five master values; do not use reserved short unit names as spreadsheet aliases. Use native FreeCAD parameters/expressions so changing a master value and recomputing moves dependent features without rerunning Python or needing a custom Python proxy. Other dimensions below are fixed. Keep a readable feature tree and distinct body and lid objects.
+
+BODY:
+- Outer rectangular box X=0..L, Y=0..W, Z=0..H, open at the top. Wall thickness Wall, bottom thickness Floor. Sharp edges; no unrequested chamfers or fillets.
+- Four vertical screw bosses, outer diameter 8, from Z=Floor to H. Their axes are at (10,10), (L-10,10), (10,W-10), (L-10,W-10). They are fused to the floor. Each has a blind axial hole diameter 2.5, exactly 12 deep from Z=H downwards. The floor remains unperforated.
+- Front cable entry: diameter 8, axis parallel to Y, centre X=L/2 and Z=18, through only the front wall Y=0..Wall. Back wall stays closed.
+- Eight rectangular ventilation slots through only the right wall X=L-Wall..L. Each is 3 wide in Y and 16 high, from Z=14 to 30. Slot i=0..7 occupies Y=(16+7*i)..(19+7*i). Left wall stays closed.
+
+LID:
+- Top plate X=0..L, Y=0..W, Z=H..H+3, thickness 3.
+- An underside locating skirt, a rectangular frame, is fused to that plate and extends from Z=H-4 to H. It fits inside the body with 0.3 clearance on each side: skirt outer X=Wall+0.3..L-Wall-0.3, outer Y=Wall+0.3..W-Wall-0.3. Skirt wall thickness 1.5. No skirt floor or roof besides the lid plate.
+- Four through holes diameter 3.4 in the plate at the same XY axes as the body bosses. Each has a diameter 6.2 counterbore, depth 1.4 down from the top face. These holes do not go through the body floor.
+
+Each physical part must be one valid solid. The assembled parts must have no positive-volume intersection. Show actual assembled and separated views. Report wall thickness, all holes/slots, skirt clearance and the blind-hole depth using geometry checks; do not infer print fit from screen checks.
+
+Export:
+1. A native enclosure-120.FCStd with master L=120, plus separate body-120.step/.stl and lid-120.step/.stl.
+2. Demonstrate changing the spreadsheet alias LengthMM to 140 mm and recomputing. Export enclosure-140.FCStd, body-140.step/.stl and lid-140.step/.stl. Width, height, walls, holes and fixed slot coordinates must stay as specified; the right bosses and wall move, the cable entry tracks the new centre, and the lid grows. The other master values must also drive their respective dependent dimensions natively.
+3. Save cad-manifest.json with keys document_120, document_140, spreadsheet, body_object and lid_object. Values are the exported FCStd filenames and actual FreeCAD object Names, not Labels. Use the same object Names in both native documents. The spreadsheet must support getCellFromAlias('LengthMM') and the other four aliases above.
+
+Build and repair the construction yourself through the supplied tools. The specification is complete. Do not stop after a plan. Preserve original and changed exports. Save all files in the output directory supplied by the supervisor.

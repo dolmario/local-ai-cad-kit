@@ -1,0 +1,8 @@
+Construct a mounting cable clip for ONE cable of diameter 6 mm. All dimensions below are the synthetic test specification in millimetres. They are complete; do not stop to ask for design choices already specified here.
+
+Coordinate system: X width, Y clip length, Z height; mounting plane Z=0.
+Flat rectangular mounting foot: X=0..32, Y=0..20, Z=0..3.
+C-shaped clip: length along Y=0..20; cylindrical cable-channel axis parallel to Y at X=16, Z=8.2. Channel internal diameter 6.4. Outer diameter 12.4, giving 3.0 radial wall thickness. The lowest part of the outer clip overlaps the foot by 1 mm so that the result is one connected solid.
+Top opening: a clear vertical slot 5.0 mm wide, X=13.5..18.5, along the complete clip length Y=0..20. It starts at Z=8.2 and extends upward completely through the outer clip wall. The cable channel must remain clear through both Y ends.
+Two straight vertical through-holes in the foot: diameter 3.5 mm, axes parallel to Z, centres (X=4,Y=10) and (X=28,Y=10). Their centre spacing is 24 mm. No countersinks, counterbores, extra holes, fillets or chamfers.
+Build exactly one valid connected solid. Save STEP, watertight STL and the native FCStd document. Check the base dimensions, clip length, inner and outer diameters, wall thickness, opening width, hole diameters and centres with code. Look at a real FreeCAD view. Print orientation: foot flat on Z=0; assess printability honestly without claiming a real print test.

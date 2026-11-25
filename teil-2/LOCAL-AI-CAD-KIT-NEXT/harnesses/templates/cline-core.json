@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "freecad": {
+      "transport": {
+        "type": "stdio",
+        "command": "uvx",
+        "args": [
+          "--offline",
+          "--python",
+          "3.12",
+          "--from",
+          "freecad-mcp==0.1.31",
+          "freecad-mcp"
+        ]
+      },
+      "timeout": 180,
+      "initializeTimeout": 30
+    }
+  }
+}

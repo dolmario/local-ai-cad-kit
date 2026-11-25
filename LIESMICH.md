@@ -105,3 +105,6 @@ Der Installer wählt ein Modell passend zur Hardware. Ihr könnt eines erzwingen
 
 ## Werbung
 Unser Drucker, der Anycubic Kobra X: https://pboost.me/E6KBb0ba (Werbung / Affiliate-Link: Bei qualifizierten Käufen erhalte ich eventuell eine Provision, für dich ändert sich der Preis nicht).
+
+## Teil 2
+Begleitmaterial zum Video Teil 2 (fünf Modelle, Kabelclip, veränderbares Gehäuse, experimentelles Kit mit mehreren Assistenten): siehe [`teil-2/`](teil-2/README.md).

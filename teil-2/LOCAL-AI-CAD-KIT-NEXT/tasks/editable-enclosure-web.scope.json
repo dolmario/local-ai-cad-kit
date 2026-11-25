@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "case": "editable-enclosure-web",
+  "status": "prepared_not_started",
+  "task_file": "tasks/editable-enclosure-web.txt",
+  "baseline_task_file": "tasks/editable-enclosure.txt",
+  "baseline_task_sha256": "4ed7de64fc38e4e530bc4e55a56e4faa23dce3290220b0596b0cb157cee70f49",
+  "web_task_sha256": "280ebc1e9233d1f7c3b115469d5ed4c8175a5cd6b4d3509e67d7500fb8dbfcc7",
+  "baseline_prefix_byte_identical": true,
+  "web": {
+    "mode": "search",
+    "transport": "stdio",
+    "adapter": "harnesses/web-tools.py",
+    "tools": [
+      "web_search",
+      "web_fetch"
+    ],
+    "searxng_url": "http://127.0.0.1:8080",
+    "evidence_directory": "${RUNTIME}/web-evidence",
+    "public_repositories": "allowed_including_our_own",
+    "cloud_llm_inference": false,
+    "os_network_isolation_claim": false,
+    "server_key": "cad_web"
+  },
+  "night_comparison": {
+    "harness": "cline-core",
+    "sdk": "0.2.1",
+    "cli": "3.0.75",
+    "model": "inkling-refresh",
+    "runtime": "Unsloth b12649-mix-c7059d6 / 189f431bf / ROCm gfx1151",
+    "context": 262144,
+    "output_tokens": 131072,
+    "thinking_budget": -1,
+    "kv_cache": "Q8_0 K and V",
+    "dspark_nmax": 2,
+    "sampling": {
+      "temperature": 1,
+      "top_p": 1,
+      "top_k": 0,
+      "min_p": 0
+    },
+    "skills": "new frozen copy of the complete v4 skill set; do not add later learned skills",
+    "frozen_skill_sha256": {
+      "drawing-to-part/SKILL.md": "bdd5e7a238758905d47e023a21b737721fa21d34c33c40d15aa81a79ad150c60",
+      "freecad-mcp-rules/SKILL.md": "538d8be91794aae2c307028e5b7bafdee782bd13d4447f82eb0f63561dabfb4a",
+      "key-cap/SKILL.md": "3792266b42c28a901fefe9528f3dda348af902fa75b0b0a4eb74a23b0f9aab75",
+      "photo-vs-caliper/SKILL.md": "cbd1c00ec28ddc4f46881ea8233513f45e124de846fbd7876338b35313af3c30",
+      "printability/SKILL.md": "f04730551a47f03e9bda19ede390e7a7430a9f764d31e55c3a3c34a194006a1f"
+    },
+    "same_geometry_and_independent_checks": true,
+    "added_factors": [
+      "Explicit web-research assignment, including one search and primary-source fetch",
+      "Two new MCP tools and evidence text increase tool/prompt context",
+      "Source journal web-sources.json is an additional deliverable",
+      "Fresh session; remote search/page contents can change over time"
+    ],
+    "claim": "Additional practical comparison; no isolated speed or universal model ranking claim"
+  },
+  "start_requirements": [
+    "Current run finished; wrapper restored and all own relevant processes ended",
+    "Parent completes current Wiki obligations and fresh operational SOP/preflight",
+    "One GPU run only, through unchanged mit_pause.py",
+    "Fresh kit/output/session; verify model/runtime and all five skill hashes",
+    "Do not repeat a failed run type automatically"
+  ],
+  "no_model_or_freecad_test_performed_by_preparation": true
+}

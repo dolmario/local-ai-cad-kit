@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "model_inference": false,
+  "sessions": [
+    {
+      "session": 1,
+      "image_or_text": "vision",
+      "tools": 17,
+      "output_token_limit": 131072,
+      "headless_measured": true,
+      "headless_exit": 0,
+      "readable_skill_again": null,
+      "document_retrieved": null,
+      "own_gui_closed": true
+    },
+    {
+      "session": 2,
+      "image_or_text": "text",
+      "tools": 17,
+      "output_token_limit": 131072,
+      "headless_measured": true,
+      "headless_exit": 0,
+      "readable_skill_again": true,
+      "document_retrieved": true,
+      "own_gui_closed": true
+    }
+  ]
+}

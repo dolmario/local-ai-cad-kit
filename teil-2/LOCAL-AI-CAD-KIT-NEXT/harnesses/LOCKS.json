@@ -1,0 +1,22 @@
+{
+  "kind": "Exact npm dependency locks of the locally exercised harness installations; no executables or model weights bundled",
+  "records": [
+    {
+      "harness": "opencode",
+      "package_lock_sha256": "731d409fa47918ed08c1f30206190145db6213692b80abc414a167346a01f0d8"
+    },
+    {
+      "harness": "opencode2",
+      "package_lock_sha256": "0b5a3e59247f5484ee64f26e5b92f0e5b440c8fa82131ee1e7cf09ba330494fe"
+    },
+    {
+      "harness": "cline-core",
+      "package_lock_sha256": "31a755ef4f2cdbc1aca7ca42b7cd17211d33b2e5500bfb640c596cef01e35a6d"
+    },
+    {
+      "harness": "crush",
+      "package_lock_sha256": "7acfbbb6bc09b064f823d2a9bb8692731b624b56bf387cb9e9fdd9f03395ba2e"
+    }
+  ],
+  "hermes": "Use the official PM-managed installation recorded in the companion method."
+}

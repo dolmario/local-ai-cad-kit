@@ -1,0 +1,100 @@
+{
+  "case": "cline-core-minicpm-clip-cad",
+  "part": "Regular Q4_K_M MiniCPM cable clip",
+  "units": "mm",
+  "specified_base_xy": [
+    32,
+    20
+  ],
+  "whole_part_step_xyz": [
+    36.0,
+    26.2,
+    14.4
+  ],
+  "mesh_bounds": [
+    [
+      0.0,
+      -6.199854,
+      0.0
+    ],
+    [
+      36.0,
+      20.0,
+      14.4
+    ]
+  ],
+  "overhang_right_mm": 4.0,
+  "overhang_front_mm": 6.2,
+  "channel_centre": [
+    16.0,
+    0.0,
+    8.2
+  ],
+  "channel_axis": [
+    1.0,
+    0.0,
+    -2.22044604925e-16
+  ],
+  "specified_channel_axis": [
+    0,
+    1,
+    0
+  ],
+  "axis_difference_degrees": 90,
+  "step_checks": {
+    "valid": true,
+    "one_solid": true,
+    "base_bounds": false,
+    "channel_diameter_axis": false,
+    "outer_diameter_axis": false,
+    "left_screw": true,
+    "right_screw": true,
+    "volume": false,
+    "expected_max_height": false,
+    "functional_probes": false
+  },
+  "orthographic_projection": {
+    "qwen": {
+      "step_sha256": "d614b434d9f0d475d3428ebc1ce84cba005827c1af730809471fea0434b07a18",
+      "bottom_face_mm": [
+        0,
+        32,
+        0,
+        20
+      ],
+      "xy_bounds_mm": [
+        0.0,
+        32.0,
+        0.0,
+        20.0
+      ],
+      "cable_axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "projection_mesh_sha256": "80eb8cf40c29f2ee1d40005ff722318e601f6b0c02d9c6fd26375dcc9334a434"
+    },
+    "minicpm": {
+      "step_sha256": "d7b4f177ca596e47f099ffba6e03334d3ba202057e94814da73251fa1d5b7e94",
+      "bottom_face_mm": [
+        0,
+        32,
+        0,
+        20
+      ],
+      "xy_bounds_mm": [
+        0.0,
+        36.0,
+        -6.199999809265137,
+        20.0
+      ],
+      "cable_axis": [
+        1.0,
+        0.0,
+        -2.22044604925e-16
+      ],
+      "projection_mesh_sha256": "cf6a89bd8935188cb635641747141612e32ecad92f0548320b81803003ef65c9"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "model": {
+    "default": "local-cad",
+    "provider": "custom",
+    "base_url": "http://127.0.0.1:18080/v1",
+    "context_length": 262144
+  },
+  "agent": {
+    "max_turns": 256
+  },
+  "terminal": {
+    "backend": "local",
+    "cwd": "${KIT}",
+    "timeout": 180
+  },
+  "auxiliary": {
+    "vision": {
+      "provider": "custom",
+      "model": "local-cad",
+      "base_url": "http://127.0.0.1:18080/v1",
+      "api_key": "local-test-no-secret"
+    }
+  },
+  "mcp_servers": {
+    "freecad": {
+      "command": "uvx",
+      "args": [
+        "--offline",
+        "--python",
+        "3.12",
+        "--from",
+        "freecad-mcp==0.1.31",
+        "freecad-mcp"
+      ],
+      "enabled": true,
+      "timeout": 180,
+      "connect_timeout": 60,
+      "supports_parallel_tool_calls": false
+    }
+  },
+  "tools": {
+    "tool_search": {
+      "enabled": "off"
+    }
+  }
+}

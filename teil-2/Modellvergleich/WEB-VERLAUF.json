@@ -1,0 +1,86 @@
+{
+  "run": "cline-core-inkling-web-enclosure-b12649-cad",
+  "source": "The twelve contemporaneous search/fetch records from the web-enabled enclosure run.",
+  "design_dimensions_source": "Numeric task brief supplied before web research.",
+  "searches": 3,
+  "fetches": 9,
+  "fetch_200": 5,
+  "fetch_404": 4,
+  "records": [
+    {
+      "tool": "web_search",
+      "http_status": 200,
+      "query": "FreeCAD spreadsheet aliases expressions tutorial getCellFromAlias",
+      "result_count": 5,
+      "sequence": 1
+    },
+    {
+      "tool": "web_fetch",
+      "http_status": 200,
+      "url": "https://wiki.freecad.org/Spreadsheet_Workbench",
+      "sequence": 2
+    },
+    {
+      "tool": "web_fetch",
+      "http_status": 404,
+      "url": "https://wiki.freecad.org/Expression_Engine",
+      "sequence": 3
+    },
+    {
+      "tool": "web_fetch",
+      "http_status": 200,
+      "url": "https://wiki.freecad.org/Spreadsheet_Workbench#Expressions",
+      "sequence": 4
+    },
+    {
+      "tool": "web_search",
+      "http_status": 200,
+      "query": "FreeCAD setExpression getCellFromAlias python spreadsheet",
+      "result_count": 5,
+      "sequence": 5
+    },
+    {
+      "tool": "web_fetch",
+      "http_status": 200,
+      "url": "https://wiki.freecad.org/Expressions",
+      "sequence": 6
+    },
+    {
+      "tool": "web_fetch",
+      "http_status": 200,
+      "url": "https://github.com/dolmario/local-ai-cad-kit",
+      "sequence": 7
+    },
+    {
+      "tool": "web_search",
+      "http_status": 200,
+      "query": "FreeCAD Spreadsheet_AddSpreadsheet command source code",
+      "result_count": 3,
+      "sequence": 8
+    },
+    {
+      "tool": "web_fetch",
+      "http_status": 404,
+      "url": "https://raw.githubusercontent.com/FreeCAD/FreeCAD/main/src/Spreadsheet/Spreadsheet_Workbench.cpp",
+      "sequence": 9
+    },
+    {
+      "tool": "web_fetch",
+      "http_status": 200,
+      "url": "https://github.com/search?q=repo:FreeCAD/FreeCAD+Spreadsheet::Spreadsheet&type=code",
+      "sequence": 10
+    },
+    {
+      "tool": "web_fetch",
+      "http_status": 404,
+      "url": "https://raw.githubusercontent.com/FreeCAD/FreeCAD/main/src/Spreadsheet/Spreadsheet_Gui.cpp",
+      "sequence": 11
+    },
+    {
+      "tool": "web_fetch",
+      "http_status": 404,
+      "url": "https://raw.githubusercontent.com/FreeCAD/FreeCAD/main/src/Spreadsheet/Spreadsheet.h",
+      "sequence": 12
+    }
+  ]
+}

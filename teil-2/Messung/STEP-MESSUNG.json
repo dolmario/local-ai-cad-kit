@@ -1,0 +1,147 @@
+{
+  "units": "mm",
+  "files": {
+    "Testbelege/CPU-NACHEXPORT-INKLING-WEB/body-120.step": {
+      "sha256": "78cdcccd7e70659818bc3d03a54b3b90e1969b51e9e533e524b78df6e6e4944e",
+      "hole_centres_xy_mm": [
+        [
+          10.0,
+          10.0
+        ],
+        [
+          10.0,
+          70.0
+        ],
+        [
+          110.0,
+          10.0
+        ],
+        [
+          110.0,
+          70.0
+        ]
+      ]
+    },
+    "Testbelege/CPU-NACHEXPORT-INKLING-WEB/lid-120.step": {
+      "sha256": "f8da4aa159b50d823794d41659aabf289f002bc0bac77abe8da7a35f19aa316c",
+      "hole_centres_xy_mm": [
+        [
+          10.0,
+          10.0
+        ],
+        [
+          10.0,
+          70.0
+        ],
+        [
+          110.0,
+          10.0
+        ],
+        [
+          110.0,
+          70.0
+        ]
+      ]
+    },
+    "Testbelege/CPU-NACHEXPORT-INKLING-WEB/body-140.step": {
+      "sha256": "d53a9f60585cdf857a71837b6cbf281444ad3de04819c9f4b5fcb391baa90940",
+      "hole_centres_xy_mm": [
+        [
+          10.0,
+          10.0
+        ],
+        [
+          10.0,
+          70.0
+        ],
+        [
+          130.0,
+          10.0
+        ],
+        [
+          130.0,
+          70.0
+        ]
+      ]
+    },
+    "Testbelege/CPU-NACHEXPORT-INKLING-WEB/lid-140.step": {
+      "sha256": "a1e015d13412802af3844846cf7a8f54953949bd2db81c0c4a1625809743eeaf",
+      "hole_centres_xy_mm": [
+        [
+          10.0,
+          10.0
+        ],
+        [
+          10.0,
+          70.0
+        ],
+        [
+          130.0,
+          10.0
+        ],
+        [
+          130.0,
+          70.0
+        ]
+      ]
+    }
+  },
+  "native_parameter_tables": {
+    "120": {
+      "file": "enclosure-120.FCStd",
+      "sha256": "ffd7e5271f40a4d4f1f00333101dcdede8a538cb558eac6ba6077ccbceebcd01",
+      "cells": {
+        "A1": {
+          "alias": "LengthMM",
+          "content": "=120 mm"
+        },
+        "A2": {
+          "alias": "WidthMM",
+          "content": "=80 mm"
+        },
+        "A3": {
+          "alias": "HeightMM",
+          "content": "=40 mm"
+        },
+        "A4": {
+          "alias": "WallMM",
+          "content": "=3 mm"
+        },
+        "A5": {
+          "alias": "FloorMM",
+          "content": "=3 mm"
+        }
+      }
+    },
+    "140": {
+      "file": "enclosure-140-cpu-derived.FCStd",
+      "sha256": "f07241a9f6cebd194eac3e796cd5aca2f6a9ab8314834f931007b4f9660d2569",
+      "cells": {
+        "A1": {
+          "alias": "LengthMM",
+          "content": "=140 mm"
+        },
+        "A2": {
+          "alias": "WidthMM",
+          "content": "=80 mm"
+        },
+        "A3": {
+          "alias": "HeightMM",
+          "content": "=40 mm"
+        },
+        "A4": {
+          "alias": "WallMM",
+          "content": "=3 mm"
+        },
+        "A5": {
+          "alias": "FloorMM",
+          "content": "=3 mm"
+        }
+      }
+    }
+  },
+  "right_edge_distance_mm": 10,
+  "120_mm": "Saved by the local model before the graphics error.",
+  "140_mm": "Separate CPU export after reopening and changing one length cell.",
+  "physical_fit_checked": false
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "local/local-cad",
+  "provider": {
+    "local": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Local llama.cpp",
+      "options": {
+        "baseURL": "http://127.0.0.1:18080/v1"
+      },
+      "models": {
+        "local-cad": {
+          "name": "Local CAD model (vision)",
+          "limit": {
+            "context": 262144,
+            "output": 131072
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "mcp": {
+    "freecad": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--offline",
+        "--python",
+        "3.12",
+        "--from",
+        "freecad-mcp==0.1.31",
+        "freecad-mcp"
+      ],
+      "enabled": true,
+      "timeout": 180000
+    },
+    "photo-measure": {
+      "type": "local",
+      "command": [
+        "uv",
+        "run",
+        "--offline",
+        "--project",
+        "${KIT}\\foto-mcp",
+        "python",
+        "${KIT}\\foto-mcp\\foto_mcp.py"
+      ],
+      "enabled": true,
+      "timeout": 60000
+    }
+  },
+  "command": {
+    "kappe": {
+      "description": "key cap from a photo",
+      "template": "Design a TPU key cap for the key in this photo: $ARGUMENTS\nFirst load the skills photo-vs-caliper, key-cap and freecad-mcp-rules and follow them, together with AGENTS.md:\n1. Call photo-measure.measure_key with the photo path. Show the values and the path of the control image, and ask me to check it.\n2. Ask me for caliper values (head diameter, head thickness, shoulder width right next to the head). Wait for my answer.\n3. Write down the design with all numbers before building: groove diameter = head diameter + 0.3 mm (this fitted on our printed cap), groove height = head thickness + 0.3 mm,\n   lip opening = head diameter - 2 mm, outer wall 1.5 mm, lip thickness 1.0 mm, shaft passage = shoulder edges + 0.15 mm per side.\n4. Build ONE solid in a new FreeCAD document. Lips closed all round, only the passage open.\n5. Check with code: isValid, solids == 1, bounding box, isInside probes (lips closed, passage free, groove free). Report the results.\n6. Export STL and STEP to output/. Give the paths."
+    },
+    "zeichnung": {
+      "description": "part from a technical drawing",
+      "template": "Build the part in this technical drawing: $ARGUMENTS\nLoad drawing-to-part, freecad-mcp-rules and printability. Read and interpret the dimensions, construct the part in FreeCAD, verify the measured geometry against the drawing, inspect a real view, and export STEP, STL and FCStd. Use the supplied reusable helpers when useful. Ask only about genuinely missing dimensions."
+    },
+    "beschreibung": {
+      "description": "part from a description",
+      "template": "Build this functional part: $ARGUMENTS\nLoad freecad-mcp-rules and printability. Construct the specified geometry, verify all functional dimensions and openings, inspect an actual FreeCAD view, and export STEP, STL and FCStd. The test specification is complete; use its supplied measurements."
+    },
+    "pruefen": {
+      "description": "check before printing",
+      "template": "Load the skill printability. Check the part in the active FreeCAD document before I print it:\nisValid, number of solids, bounding box, volume, minimum wall thickness at the thinnest place you can find,\noverhangs steeper than 45 degrees in the printing orientation, and whether STL/STEP exist in output/.\nReport problems first, then what is fine. Do not change the part unless I ask."
+    }
+  },
+  "instructions": [
+    "AGENTS.md"
+  ],
+  "enabled_providers": [
+    "local"
+  ],
+  "skills": {
+    "paths": ["${KIT}\\skills"]
+  },
+  "snapshot": false,
+  "autoupdate": false,
+  "agent": {
+    "cad": {
+      "mode": "primary",
+      "model": "local/local-cad",
+      "steps": 256,
+      "prompt": "Construct and verify the requested functional FreeCAD part. Use the supplied CAD skills and actual tools. Continue through validation and export. Report measured results and paths.",
+      "permission": {
+        "question": "allow"
+      }
+    }
+  },
+  "default_agent": "cad",
+  "permission": {
+    "read": "allow",
+    "edit": "ask",
+    "bash": "ask",
+    "skill": "allow",
+    "freecad_*": "ask",
+    "photo-measure_*": "ask",
+    "external_directory": "ask",
+    "question": "allow"
+  }
+}

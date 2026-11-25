@@ -1,0 +1,93 @@
+{
+  "lsp": {},
+  "mcp": {
+    "freecad": {
+      "args": [
+        "--offline",
+        "--python",
+        "3.12",
+        "--from",
+        "freecad-mcp==0.1.31",
+        "freecad-mcp"
+      ],
+      "command": "uvx",
+      "timeout": 180,
+      "type": "stdio"
+    }
+  },
+  "models": {
+    "large": {
+      "max_tokens": 131072,
+      "model": "local-cad",
+      "provider": "local",
+      "reasoning_effort": "high"
+    },
+    "small": {
+      "max_tokens": 131072,
+      "model": "local-cad",
+      "provider": "local",
+      "reasoning_effort": "high"
+    }
+  },
+  "options": {
+    "auto_lsp": false,
+    "data_directory": "${RUNTIME}\\crush-data",
+    "disable_default_providers": true,
+    "disable_metrics": true,
+    "disable_provider_auto_update": true,
+    "disabled_tools": [
+      "agent"
+    ]
+  },
+  "permissions": {
+    "allowed_tools": [
+      "mcp_freecad_*",
+      "freecad_*",
+      "read",
+      "view",
+      "write",
+      "edit",
+      "bash",
+      "shell",
+      "ls",
+      "glob",
+      "grep"
+    ]
+  },
+  "providers": {
+    "local": {
+      "api_key": "local-test-no-secret",
+      "base_url": "http://127.0.0.1:18080/v1",
+      "id": "local",
+      "models": [
+        {
+          "capabilities": {
+            "vision": true
+          },
+          "context_window": 262144,
+          "default_max_tokens": 131072,
+          "id": "local-cad",
+          "name": "Local CAD",
+          "pricing": {
+            "cache_create": 0,
+            "cache_hit": 0,
+            "input": 0,
+            "output": 0
+          },
+          "reasoning": {
+            "default_effort_level": "high",
+            "effort_levels": [
+              {
+                "display": "High",
+                "value": "high"
+              }
+            ],
+            "thinking": "toggleable"
+          }
+        }
+      ],
+      "name": "Local CAD",
+      "type": "openai-compat"
+    }
+  }
+}
